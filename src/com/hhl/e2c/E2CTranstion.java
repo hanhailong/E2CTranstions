@@ -10,6 +10,12 @@ import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.ui.popup.Balloon;
 import com.intellij.openapi.ui.popup.JBPopupFactory;
 import com.intellij.ui.JBColor;
+import io.reactivex.Observable;
+import io.reactivex.Observer;
+import io.reactivex.Scheduler;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Function;
+import io.reactivex.schedulers.Schedulers;
 
 import java.awt.*;
 import java.io.IOException;
@@ -43,20 +49,34 @@ public class E2CTranstion extends AnAction {
 
         String result = "翻译后的结果";
         //2.调用相关api得到翻译后的结果
-        try {
-            URL url = new URL(API + selectionText);
-            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+        Observable.just(API + selectionText)
+                .map(s -> HttpUtils.doGet(s))
+                .subscribeOn(Schedulers.io())
+                .subscribe(new Observer<String>() {
+                    @Override
+                    public void onSubscribe(Disposable disposable) {
 
+                    }
 
-        } catch (MalformedURLException e1) {
-            e1.printStackTrace();
-        } catch (IOException e1) {
-            e1.printStackTrace();
-        }
+                    @Override
+                    public void onNext(String s) {
+                        //3.显示翻译后的结果
+                        showTranstionResult(editor, s);
+                    }
+
+                    @Override
+                    public void onError(Throwable throwable) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
 
         //3.显示翻译后的结果
-        showTranstionResult(editor, result);
-
+//        showTranstionResult(editor, result);
     }
 
     /**
