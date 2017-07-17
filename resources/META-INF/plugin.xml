@@ -1,12 +1,12 @@
 <idea-plugin version="2">
-    <id>com.your.company.unique.plugin.id</id>
-    <name>Plugin display name here</name>
+    <id>com.hhl.e2c.E2CTranstion</id>
+    <name>E2CTranstion</name>
     <version>1.0</version>
-    <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
+    <vendor email="hanhailong.cool@163.com" url="http://hanhailong.com">龙行天下</vendor>
 
     <description><![CDATA[
-      Enter short description for your plugin here.<br>
-      <em>most HTML tags may be used</em>
+      English to Chinese.<br>
+      <em>Android Plugins</em>
     ]]></description>
 
     <change-notes><![CDATA[
