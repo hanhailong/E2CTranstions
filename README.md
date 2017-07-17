@@ -7,3 +7,7 @@ English to Chinese in IntelliJ IDEA or AndroidStudio
 ## 效果图
 
 ![image](screenshots/transtion.png)
+
+插件安装成功后：
+
+![image](screenshots/plugin_preview.png)
